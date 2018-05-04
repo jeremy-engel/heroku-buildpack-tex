@@ -60,6 +60,16 @@ slug-size, see
 [here](https://devcenter.heroku.com/articles/slug-compiler#slug-size).
 A full TeX Live installation is very large.
 
+### Custom texmfhome directory
+
+You can customize the `TEXMFHOME` directory by adding a file called
+`texlive.texmfhome` to your project. It should contain only the path to the directory
+you wish to use for the texmfhome directory. For example:
+
+```text
+~/texmf
+```
+
 ### Custom TeX Live version
 
 By default the latest TeX Live version will be installed. You can customize the

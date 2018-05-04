@@ -29,6 +29,13 @@ TEXLIVE_CACHE=$CACHE_DIR/.texlive
 PATH=$TEXLIVE_HOME/bin/x86_64-linux:$PATH
 PROFILE_D=$BUILD_DIR/.profile.d/texlive.sh
 
+TEXMFHOME=$TEXLIVE_HOME/var/texmf
+
+# Optional: use custom path for texmfhome
+if [ -f "$BUILD_DIR/texlive.texmfhome" ]; then
+    TEXMFHOME=$(cat "$BUILD_DIR/texlive.texmfhome")
+fi
+
 # Output helpers
 # shellcheck source=bin/utils
 source "$BIN_DIR/utils"
@@ -56,7 +63,7 @@ if [ ! "$(which pdflatex)" ]; then
     {
       echo "TEXDIR $TEXLIVE_HOME";
       echo "TEXMFCONFIG $TEXLIVE_HOME/var/texmf-config";
-      echo "TEXMFHOME $TEXLIVE_HOME/var/texmf";
+      echo "TEXMFHOME $TEXLIVE_HOME";
       echo "TEXMFLOCAL $TEXLIVE_HOME/texmf-local";
       echo "TEXMFSYSCONFIG $TEXLIVE_HOME/texmf-config";
       echo "TEXMFSYSVAR $TEXLIVE_HOME/texmf-var";
