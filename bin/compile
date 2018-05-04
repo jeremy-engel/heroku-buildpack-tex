@@ -104,6 +104,9 @@ if [ ! "$(which pdflatex)" ]; then
     exit 1
 fi
 
+# Set TEXMFHOME directory on non-initial builds
+tlmgr conf texmf TEXMFHOME $TEXMFHOME
+
 # Set up the environment for runtimes now that compilation has finished
 # shellcheck disable=SC2016
 echo 'export PATH=$HOME/.texlive/bin/x86_64-linux:$PATH' > "$PROFILE_D"
