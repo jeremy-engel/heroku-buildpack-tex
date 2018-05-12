@@ -104,8 +104,13 @@ if [ ! "$(which pdflatex)" ]; then
     exit 1
 fi
 
-# Set TEXMFHOME directory on non-initial builds
+# Optional: set TEXMFHOME directory on non-initial builds
 tlmgr conf texmf TEXMFHOME $TEXMFHOME
+
+# Optional: run a script texlive.run to do any cleanup tasks that are environment specific
+if [ -f "$BUILD_DIR/texlive.run" ]; then
+    sh "$BUILD_DIR/texlive.run"
+fi
 
 # Set up the environment for runtimes now that compilation has finished
 # shellcheck disable=SC2016
