@@ -56,7 +56,7 @@ if [ ! -f "$TEXLIVE_HOME/install-tl" ]; then
     curl "$TEXLIVE_INSTALLER_URL" -L -s -o - | tar --strip-components=1 -xzf - -C "$TEXLIVE_HOME"
 fi
 
-if [ ! "$(which pdflatex)" ]; then
+if [ ! "$(which tlmgr)" ]; then
     build-step "Installing TeX Live..."
 
     PROF=$BIN_DIR/../conf/texlive.profile
@@ -99,7 +99,7 @@ build-step "Caching..."
 cp -R "$TEXLIVE_HOME/"* "$TEXLIVE_CACHE/"
 
 # Check for an essential binary to make sure it's installed
-if [ ! "$(which pdflatex)" ]; then
+if [ ! "$(which tlmgr)" ]; then
     build-warn "TeX Live installation failed"
     exit 1
 fi

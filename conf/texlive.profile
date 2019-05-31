@@ -1,7 +1,5 @@
-selected_scheme scheme-small
+selected_scheme scheme-infraonly
 binary_x86_64-linux 1
-collection-basic 1
-collection-latex 1
 instopt_adjustpath 0
 instopt_adjustrepo 1
 instopt_letter 1
